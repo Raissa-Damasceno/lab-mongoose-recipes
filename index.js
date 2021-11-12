@@ -12,7 +12,7 @@ mongoose
   .connect(MONGODB_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(self => {
     console.log(`Connected to the database: "${self.connection.name}"`);
@@ -20,8 +20,26 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
+    const newRecipe = {
+      title: "Brigadeiro",
+      level: "Easy Peasy",
+      ingredients: ["condensed milk", "butter", "chocolate powder"],
+      cuisine: "brazilian",
+      dishType: "dessert",
+      imagem: "https://cdn.panelinha.com.br/receita/958014000000-Brigadeiro.jpg", 
+      duration: 20,
+      creator: "Raissa Damasceno",
+      created: new Date
+    }
+    return newRecipe
     // Run your code here, after you have insured that the connection was made
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+
+
+  // async Function updateRecipe () {
+
+  // };
